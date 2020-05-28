@@ -79,6 +79,5 @@ jobs:
             .
         }
         buildx -t "$DOCKER_BASE:$TAG"
-        buildx -t "$DOCKER_BASE:$TAG-alpine" --target alpine
     - name: Docker logout
       run: docker logout
