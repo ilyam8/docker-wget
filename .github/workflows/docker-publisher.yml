@@ -15,7 +15,7 @@ jobs:
     env:
       # Export environment variables for all stages.
       DOCKER_CLI_EXPERIMENTAL: enabled # for 'docker buildx'
-      DOCKER_USER: ${{secrets.DOCKER_USER}}
+      DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       DOCKER_REPO: wget
       # We use all platforms for which FROM images in our Dockerfile are
