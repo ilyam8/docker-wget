@@ -11,7 +11,7 @@ jobs:
       github.event_name == 'push' &&
         (github.ref == 'refs/heads/master' ||
         startsWith(github.ref, 'refs/tags/')) &&
-      github.repository == 'ilyam8/wget'
+      github.repository == 'ilyam8/docker-wget'
     env:
       # Export environment variables for all stages.
       DOCKER_CLI_EXPERIMENTAL: enabled # for 'docker buildx'
