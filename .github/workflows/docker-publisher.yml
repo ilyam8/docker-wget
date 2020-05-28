@@ -75,7 +75,6 @@ jobs:
           docker buildx build \
             --platform ${DOCKER_PLATFORMS// /,} \
             --push \
-            -f cmd/shfmt/Dockerfile \
             "$@" \
             .
         }
