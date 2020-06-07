@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       github.event_name == 'push' &&
-        (github.ref == 'refs/heads/master' ||
-        startsWith(github.ref, 'refs/tags/')) &&
+      (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')) &&
       github.repository == 'ilyam8/docker-wget'
     env:
       # Export environment variables for all stages.
@@ -78,6 +77,10 @@ jobs:
             "$@" \
             .
         }
-        buildx -t "$DOCKER_BASE:$TAG"
+        if [ $TAG == "latest" ]; then
+          buildx -t "$DOCKER_BASE:$TAG"
+        else
+          buildx -t "$DOCKER_BASE:$TAG" -t "$DOCKER_BASE:latest"
+        fi
     - name: Docker logout
       run: docker logout
