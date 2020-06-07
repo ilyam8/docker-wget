@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - master
-  release:
-    types: [published, released]
 jobs:
   build:
     name: Build and deploy Docker images
@@ -79,10 +77,6 @@ jobs:
             "$@" \
             .
         }
-        if [ $TAG == "latest" ]; then
-          buildx -t "$DOCKER_BASE:$TAG"
-        else
-          buildx -t "$DOCKER_BASE:$TAG" -t "$DOCKER_BASE:latest"
-        fi
+        buildx -t "$DOCKER_BASE:$TAG"
     - name: Docker logout
       run: docker logout
